@@ -19,7 +19,11 @@ public class IdController {
 
     Id myId;
 
-    public ArrayList<Id> getIds() throws IOException, InterruptedException {
+    //This was ArrayList
+    public List<Id> getIds() throws IOException, InterruptedException {
+
+        //Convert stuff from here toooooooooooooooooooo
+        String rootURL = "http://zipcode.rocks:8085/ids";
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -28,12 +32,12 @@ public class IdController {
                 .uri(URI.create(rootURL))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+        //Here into a singleton class and have the bottom stuff access it.
 
         //parse JSON into Objects
         ObjectMapper mapper = new ObjectMapper();
-        ArrayList<Id> ids = mapper.readValue(response.body(), new TypeReference<>() {});
-        ids.forEach(System.out::println);
+        List<models.Id> ids = mapper.readValue(response.body(), new TypeReference<>() {});
+        //ids.forEach(System.out::println);
         return ids;
     }
 

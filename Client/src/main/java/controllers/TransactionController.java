@@ -2,6 +2,7 @@ package controllers;
 
 import models.Id;
 
+import java.io.IOException;
 import java.util.List;
 
 public class TransactionController {
@@ -11,7 +12,7 @@ public class TransactionController {
 
     public TransactionController(MessageController m, IdController j) {}
 
-    public List<Id> getIds() {
+    public List<Id> getIds() throws IOException, InterruptedException {
         return idCtrl.getIds();
     }
     public String postId(String idtoRegister, String githubName) {

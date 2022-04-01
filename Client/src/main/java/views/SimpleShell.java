@@ -15,6 +15,7 @@ import youareell.YouAreEll;
 public class SimpleShell {
 
 
+
     public static void prettyPrint(String output) {
         // yep, make an effort to format things nicely, eh?
         System.out.println(output);
@@ -68,17 +69,17 @@ public class SimpleShell {
 
                 // ids
                 if (list.contains("ids")) {
-                    String results = webber.get_ids();
+                    String results = urll.get_ids();
                     SimpleShell.prettyPrint(results);
                     continue;
                 }
 
                 // messages
-                if (list.contains("messages")) {
-                    String results = webber.get_messages();
-                    SimpleShell.prettyPrint(results);
-                    continue;
-                }
+//                if (list.contains("messages")) {
+//                    String results = webber.get_messages();
+//                    SimpleShell.prettyPrint(results);
+//                    continue;
+//                }
                 // you need to add a bunch more.
 
                 //!! command returns the last command in history
@@ -93,6 +94,8 @@ public class SimpleShell {
                 } else {
                     pb.command(list);
                 }
+
+
 
                 // // wait, wait, what curiousness is this?
                 // Process process = pb.start();
@@ -114,6 +117,8 @@ public class SimpleShell {
             //catch ioexception, output appropriate message, resume waiting for input
             catch (IOException e) {
                 System.out.println("Input Error, Please try again!");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             // So what, do you suppose, is the meaning of this comment?
             /** The steps are:

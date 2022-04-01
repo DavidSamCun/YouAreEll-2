@@ -15,12 +15,14 @@ public class ServerController {
     private ServerController() {}
 
     public static HttpRequest shared(String resource) throws IOException, InterruptedException {
+
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .header("accept", "application/json")
                 .uri(URI.create(rootURL+resource))
                 .build();
         return request;
+
     }
 
     public HttpResponse<String> idGet() throws IOException, InterruptedException {
