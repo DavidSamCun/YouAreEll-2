@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -15,28 +16,25 @@ import models.Id;
 public class IdController {
     private HashMap<String, Id> allIds;
 
+
     Id myId;
 
-    public ArrayList<Id> getIds() {
+    public ArrayList<Id> getIds() throws IOException, InterruptedException {
 
         HttpClient client = HttpClient.newHttpClient();
-
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .header("accept", "application/json")
-                //.uri(URI.create(rootURL))
-                .uri(URI.create(POSTS_API_URL))
+                .uri(URI.create(rootURL))
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
 
         //parse JSON into Objects
         ObjectMapper mapper = new ObjectMapper();
-        List<Post> posts = mapper.readValue(response.body(), new TypeReference<List<Post>>() {
-        });
-
-        posts.forEach(System.out::println);
-        return null;
+        ArrayList<Id> ids = mapper.readValue(response.body(), new TypeReference<>() {});
+        ids.forEach(System.out::println);
+        return ids;
     }
 
     public Id postId(Id id) {
