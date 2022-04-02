@@ -12,12 +12,16 @@ public class TransactionController {
 
     public TransactionController(MessageController m, IdController j) {}
 
+    public IdController getIdCtrl() {
+        return idCtrl;
+    }
+
     public List<Id> getIds() throws IOException, InterruptedException {
         return idCtrl.getIds();
     }
     public String postId(String idtoRegister, String githubName) {
-        Id tid = new Id(idtoRegister, githubName);
-        tid = idCtrl.postId(tid);
+       // Id tid = new Id(idtoRegister, githubName);
+       // tid = idCtrl.postId(tid);
         return ("Id registered.");
     }
 }

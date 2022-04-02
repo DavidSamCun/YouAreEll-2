@@ -69,7 +69,8 @@ public class SimpleShell {
 
                 // ids
                 if (list.contains("ids")) {
-                    String results = urll.get_ids();
+//                    String results = urll.get_ids();
+                    String results = urll.idController.getIds().toString();
                     SimpleShell.prettyPrint(results);
                     continue;
                 }

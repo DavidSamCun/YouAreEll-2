@@ -9,7 +9,7 @@ class IdControllerTest {
     @org.junit.jupiter.api.Test
     void getIds() throws IOException, InterruptedException {
         IdController test = new IdController();
-        test.getIds();
+        test.getiDtest();
 
     }
 

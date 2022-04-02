@@ -9,8 +9,8 @@ import java.util.List;
 
 public class YouAreEll {
 
-    MessageController messageController;
-    IdController idController;
+    public MessageController messageController;
+    public IdController idController;
 
     TransactionController tt;
 

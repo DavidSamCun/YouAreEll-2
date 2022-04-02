@@ -12,6 +12,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Id;
+import models.PostForZC;
 
 public class IdController {
     private HashMap<String, Id> allIds;
@@ -37,7 +38,7 @@ public class IdController {
         //parse JSON into Objects
         ObjectMapper mapper = new ObjectMapper();
         List<models.Id> ids = mapper.readValue(response.body(), new TypeReference<>() {});
-        //ids.forEach(System.out::println);
+        ids.forEach(System.out::println);
         return ids;
     }
 
@@ -52,5 +53,24 @@ public class IdController {
     public Id putId(Id id) {
         return null;
     }
- 
+
+    public void getiDtest() throws IOException, InterruptedException {
+        String rootURLiDs = "http://zipcode.rocks:8085/ids";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .GET()
+                .header("accept", "application/json")
+                .uri(URI.create(rootURLiDs))
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        //System.out.println(response.body());
+
+        //parse JSON into Objects
+        ObjectMapper mapper = new ObjectMapper();
+        List<Id> posts = mapper.readValue(response.body(), new TypeReference<>() {
+        });
+
+        //posts.forEach(System.out::println);
+    }
+
 }
