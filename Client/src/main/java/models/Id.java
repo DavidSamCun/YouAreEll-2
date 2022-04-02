@@ -9,6 +9,10 @@ public class Id {
     private String name;
     private String github;
 
+    public Id(){}
+
+    public Id (String uid, String name, String githubId) {}
+
     public String getUserid() {
         return userid;
     }
