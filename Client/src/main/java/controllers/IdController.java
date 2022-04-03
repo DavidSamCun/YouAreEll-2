@@ -5,18 +5,16 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Id;
-import models.PostForZC;
 
 public class IdController {
-    private HashMap<String, Id> allIds;
 
+    private HashMap<String, Id> allIds;
 
     Id myId;
 
