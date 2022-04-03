@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Id;
+import models.Message;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,4 +24,8 @@ public class TransactionController {
         tid = idCtrl.postId(tid);
         return ("Id registered.");
     }
+    public List<Message> getMessages() throws IOException, InterruptedException {
+        return msgCtrl.getMessages();
+    }
+
 }

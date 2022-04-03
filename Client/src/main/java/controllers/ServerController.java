@@ -32,11 +32,6 @@ public class ServerController {
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<Id> posts = mapper.readValue(response.body(), new TypeReference<>() {
-        });
-
         return response;
     }
 

@@ -74,11 +74,11 @@ public class SimpleShell {
                 }
 
                 // messages
-//                if (list.contains("messages")) {
-//                    String results = webber.get_messages();
-//                    SimpleShell.prettyPrint(results);
-//                    continue;
-//                }
+                if (list.contains("messages")) {
+                    String results = urll.get_messages();
+                    SimpleShell.prettyPrint(results);
+                    continue;
+                }
                 // you need to add a bunch more.
 
                 //!! command returns the last command in history

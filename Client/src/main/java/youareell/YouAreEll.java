@@ -30,9 +30,9 @@ public class YouAreEll {
         return tt.getIds().toString();
     }
 
-//    public String get_messages() {
-//        return MakeURLCall("/messages", "GET", "");
-//    }
+    public String get_messages() throws IOException, InterruptedException {
+        return tt.getMessages().toString();
+    }
 
 
 }
