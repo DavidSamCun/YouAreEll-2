@@ -35,7 +35,7 @@ public class ServerController {
         return response;
     }
 
-    private void createPostConnection(String resource, String output) throws IOException, InterruptedException {
+    public void createPostConnection(String resource, String output) throws IOException, InterruptedException {
 
         String urlToUri = rootURL + resource;
         HttpClient client = HttpClient.newHttpClient();

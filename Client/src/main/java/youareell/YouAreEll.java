@@ -34,5 +34,8 @@ public class YouAreEll {
         return tt.getMessages().toString();
     }
 
+    public void post_ids(String name, String github) throws IOException, InterruptedException {
+        tt.postId(name, github);
+    }
 
 }

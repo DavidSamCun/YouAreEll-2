@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import controllers.IdController;
 import controllers.MessageController;
@@ -22,7 +23,8 @@ public class SimpleShell {
     public static void main(String[] args) throws java.io.IOException {
 
         YouAreEll urll = new YouAreEll(new MessageController(), new IdController());
-        
+        Scanner in = new Scanner(System.in);
+
         String commandLine;
         BufferedReader console = new BufferedReader
                 (new InputStreamReader(System.in));
@@ -73,6 +75,14 @@ public class SimpleShell {
                     continue;
                 }
 
+                if (list.contains("postids")){
+                    System.out.println("Enter name");
+                    String name = in.nextLine();
+                    System.out.println("Enter github");
+                    String github = in.nextLine();
+                    urll.post_ids(name, github);
+                    continue;
+                }
                 // messages
                 if (list.contains("messages")) {
                     String results = urll.get_messages();

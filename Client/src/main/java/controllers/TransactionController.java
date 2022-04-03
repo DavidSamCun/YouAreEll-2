@@ -1,5 +1,6 @@
 package controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import models.Id;
 import models.Message;
 
@@ -19,7 +20,7 @@ public class TransactionController {
     public List<Id> getIds() throws IOException, InterruptedException {
         return idCtrl.getIds();
     }
-    public String postId(String idtoRegister, String githubName) {
+    public String postId(String idtoRegister, String githubName) throws IOException, InterruptedException {
         Id tid = new Id(idtoRegister, githubName);
         tid = idCtrl.postId(tid);
         return ("Id registered.");

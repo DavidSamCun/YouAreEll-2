@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.Id;
@@ -43,10 +44,13 @@ public class IdController {
         return listIds;
     }
 
-    public Id postId(Id id) {
+    public Id postId(Id id) throws IOException, InterruptedException {
 
-
-        return null;
+        ObjectMapper objectMapper = new ObjectMapper();
+        String output = objectMapper.writeValueAsString(id);
+        ServerController x = ServerController.getSvr();
+        x.createPostConnection("/ids", output);
+        return id;
     }
 
     public Id putId(Id id) {
