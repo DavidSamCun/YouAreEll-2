@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -40,12 +41,29 @@ public class IdController {
         return ids;
     }
 
-    public Id postId(Id id) {
+
+    //Super Beta Mode
+    public Id postId(Id id) throws IOException, InterruptedException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Id values = new Id("testMonkeh", "Ashes' PrimeApe", "SuperTest");
+        String output = objectMapper.writeValueAsString(values);
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://zipcode.rocks:8085/ids"))
+                .POST(HttpRequest.BodyPublishers.ofString(output))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+
+
         // create json from id
         // call server, get json result Or error
         // result json to Id obj
 
-        return null;
+        return values;
     }
 
     public Id putId(Id id) {

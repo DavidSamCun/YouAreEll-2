@@ -11,7 +11,11 @@ public class Id {
 
     public Id(){}
 
-    public Id (String uid, String name, String githubId) {}
+    public Id (String uid, String name, String githubId) {
+        this.userid = uid;
+        this.name = name;
+        this.github = githubId;
+    }
 
     public String getUserid() {
         return userid;
