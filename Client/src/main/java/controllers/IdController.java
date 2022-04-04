@@ -47,7 +47,6 @@ public class IdController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String output = objectMapper.writeValueAsString(id);
-        ServerController x = ServerController.getSvr();
         x.createPostConnection("/ids", output);
         return id;
     }
