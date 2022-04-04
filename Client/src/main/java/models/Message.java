@@ -15,11 +15,11 @@ package models;
  */
 public class Message implements Comparable {
 
-    private String message = "";
-    private String toid = "";
-    private String fromid = "";
-    private String timestamp = "";
-    private String sequence = "";
+    private String message = "-";
+    private String toid = "-";
+    private String fromid = "-";
+    private String timestamp = "-";
+    private String sequence = "-";
 
     public Message(){}
 
@@ -52,7 +52,7 @@ public class Message implements Comparable {
         this.message = message;
     }
 
-    public String getToid() {
+    public String getToId() {
         return toid;
     }
 

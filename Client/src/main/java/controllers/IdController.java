@@ -14,29 +14,29 @@ import models.Id;
 public class IdController {
     private HashMap<String, Id> mapIds;
     private HashSet<Id> listIds;
+    private ServerController x = ServerController.getSvr();
     Id myId;
 
     public IdController(){
         mapIds = new HashMap<>();
         listIds = new HashSet<>();
+        myId = new Id("Bulbasaur", "Hayd");
+//        myId.setName("Bulbasaur");
+//        myId.setGithub("Hayd");
     }
 
     public ArrayList<Id> getIds() throws IOException, InterruptedException {
         ServerController x = ServerController.getSvr();
         HttpResponse<String> reponse = x.createGetConnection("/ids");
-
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<Id> ids = mapper.readValue(reponse.body(), new TypeReference<>() {
         });
-
         for (Id id: ids){
             mapIds.put(id.getGithub(), id);
         }
-
         for (Id id: ids) {
             listIds.add(id);
         }
-
         return ids;
     }
 

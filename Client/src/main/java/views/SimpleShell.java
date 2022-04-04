@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 import controllers.IdController;
 import controllers.MessageController;
+import models.Id;
+import models.Message;
 import youareell.YouAreEll;
 
 // Simple Shell is a Console view for youareell.YouAreEll.
@@ -88,6 +90,14 @@ public class SimpleShell {
                     String results = urll.get_messages();
                     SimpleShell.prettyPrint(results);
                     continue;
+                }
+
+                if (list.contains("postmessages")){
+                    System.out.println("Enter");
+                    Id test1 = new Id();
+                    Id test2 = new Id();
+                    Message test3 = new Message();
+                    urll.post_messages(test1, test2, test3);
                 }
                 // you need to add a bunch more.
 

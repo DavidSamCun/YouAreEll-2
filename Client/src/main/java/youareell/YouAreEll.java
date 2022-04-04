@@ -1,6 +1,8 @@
 package youareell;
 
 import controllers.*;
+import models.Id;
+import models.Message;
 
 import java.io.IOException;
 
@@ -36,6 +38,12 @@ public class YouAreEll {
 
     public void post_ids(String name, String github) throws IOException, InterruptedException {
         tt.postId(name, github);
+    }
+
+
+    //Work in progress
+    public void post_messages(Id id, Id id2, Message msg) throws IOException, InterruptedException {
+        tt.postMessage();
     }
 
 }

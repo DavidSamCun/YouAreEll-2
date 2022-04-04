@@ -29,4 +29,10 @@ public class TransactionController {
         return msgCtrl.getMessages();
     }
 
+    public void postMessage() throws IOException, InterruptedException {
+        Id test1 = new Id();
+        Id test2 = new Id();
+        Message msg = new Message();
+        msgCtrl.postMessage(test1, test2, msg);
+    }
 }

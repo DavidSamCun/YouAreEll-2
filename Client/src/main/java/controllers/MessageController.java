@@ -13,7 +13,8 @@ import models.Message;
 public class MessageController {
 
     private HashSet<Message> messagesSeen;
-    // why a HashSet??
+    private ServerController x = ServerController.getSvr();
+    // why a HashSet??To prevent Duplicate messages
 
     public MessageController(){
         messagesSeen = new HashSet<>();
@@ -21,7 +22,6 @@ public class MessageController {
 
     public ArrayList<Message> getMessages() throws IOException, InterruptedException {
 
-        ServerController x = ServerController.getSvr();
         HttpResponse<String> reponse = x.createGetConnection("/messages");
 
         ObjectMapper mapper = new ObjectMapper();
@@ -33,10 +33,14 @@ public class MessageController {
 
         return messages;
     }
-    public ArrayList<Message> getMessagesForId(Id Id) {
-
-
-        return null;
+    public ArrayList<Message> getMessagesToId(Id Id) throws IOException, InterruptedException {
+        ArrayList<Message> messagesForId = new ArrayList<>();
+        for(Message message: this.messagesSeen){
+            if(message.getToId().equals(Id.getGithub())){
+                messagesForId.add(message);
+            }
+        }
+        return messagesForId;
     }
     public Message getMessageForSequence(String seq) {
         return null;
@@ -45,7 +49,14 @@ public class MessageController {
         return null;
     }
 
-    public Message postMessage(Id myId, Id toId, Message msg) {
+    public Message postMessage(Id myId, Id toId, Message msg) throws IOException, InterruptedException {
+
+        msg.setFromid("Bulbasaur");
+        msg.setMessage("Test");
+        ObjectMapper objectMapper = new ObjectMapper();
+        String out = objectMapper.writeValueAsString(msg);
+        x.createPostConnection("/messages", out);
+
         return null;
     }
  
