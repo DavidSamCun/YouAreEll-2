@@ -26,7 +26,6 @@ public class IdController {
     }
 
     public ArrayList<Id> getIds() throws IOException, InterruptedException {
-        ServerController x = ServerController.getSvr();
         HttpResponse<String> reponse = x.createGetConnection("/ids");
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<Id> ids = mapper.readValue(reponse.body(), new TypeReference<>() {
